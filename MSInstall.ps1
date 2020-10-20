@@ -2,7 +2,7 @@
 # index files 
 
 [int] $n = 0
-[array] $FILE = Get-ChildItem -Path $PWD\Downloads\*.MSI -Recurse -File 
+[array] $FILE = Get-ChildItem -Path $PWD\*.MSI -Recurse -File 
 [int] $List = ($FILE).Length
 
 While ($n -lt $List)
