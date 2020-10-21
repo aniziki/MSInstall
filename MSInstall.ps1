@@ -34,6 +34,7 @@ foreach ($item in $SELECT)
      }
 }
 
+
 Function msiInstall($install)
 {
     Write-Host "Installing files: "
@@ -43,7 +44,13 @@ Function msiInstall($install)
     {
         $msipkg = $install[$z]
         Write-Host $msipkg
-        Start-Process msiexec.exe -Wait -ArgumentList @('/I $msipkg /passive')
+        Start-Process msiexec.exe -Wait -ArgumentList @('/I $msipkg /q /n+ ')
+        
+        for ($i = 1; $i -le 100; $i++ )
+        {
+          Write-Progress -Activity "Installing" -Status "$i% Complete:" -PercentComplete $i;
+        }
+    
         $z++
         
     }
